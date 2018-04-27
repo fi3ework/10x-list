@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "eslint-config-alloy/react"
+  ],
+    "globals": { },
+  "rules": {
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1,
+        "flatTernaryExpressions": true
+      }
+    ],
+      "semi": [
+        "error",
+        "never"
+      ],
+        "react/jsx-indent": [
+          "warn",
+          2
+        ],
+          "react/jsx-indent-props": [
+            "warn",
+            2
+          ],
+            "no-unused-vars": [
+              "warn",
+              {
+                "vars": "all",
+                "args": "none",
+                "caughtErrors": "none"
+              }
+            ],
+              "one-var": [
+                "off"
+              ]
+  }
+}
