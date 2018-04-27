@@ -4,13 +4,18 @@ import React, { Component } from 'react'
 import Item from './item'
 
 class App extends Component {
+
+  shouldComponentUpdate() {
+    return false
+  }
+
   render() {
-    const { ids } = this.props
+    const { items } = this.props
     return (
       <div className="main" style={{ overflow: 'scroll', height: '600px' }}>
         {
-          ids.map(id => {
-            return <Item key={id} id={id} />
+          items.map(item => {
+            return <Item key={item.id} id={item.id} />
           })
         }
       </div>
@@ -19,7 +24,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  return { ids: state.ids }
+  return { items: state.items }
 }
 
 export default connect(mapStateToProps)(App)

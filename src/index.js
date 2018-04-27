@@ -1,15 +1,13 @@
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import React, { Component } from 'react'
-import App from './app'
+import App from './App'
 import { render } from 'react-dom'
 
-const initial_state = {}
-const initial_ids = []
+const initial_state = []
 const STORE_SIZE = 10000
 for (let i = 0; i < STORE_SIZE; i++) {
-  initial_state[i] = { id: i, marked: false }
-  initial_ids.push(i)
+  initial_state.push({ id: i, marked: false })
 }
 
 function items(state = initial_state, action) {
@@ -25,20 +23,9 @@ function items(state = initial_state, action) {
   }
 }
 
-function ids(state = initial_ids, action) {
-  return state
-}
+const store = createStore(combineReducers({ items: items }))
 
-function itemsReducer(state = {}, action) {
-  return {
-    ids: ids(state.ids, action),
-    items: items(state.items, action),
-  }
-}
-
-const store = createStore(itemsReducer)
-
-class NaiveList extends Component {
+export default class NaiveList extends Component {
   render() {
     return (
       <Provider store={store}>
