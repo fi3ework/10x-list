@@ -12,7 +12,8 @@ class Item extends Component {
   }
 
   render() {
-    const { id, marked } = this.props.item
+    const id = this.props.item.get('id')
+    const marked = this.props.item.get('marked')
     const bgColor = marked ? '#ECF0F1' : '#fff'
     return (
       <div

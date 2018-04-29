@@ -15,7 +15,7 @@ class App extends Component {
       <div className="main" style={{ overflow: 'scroll', height: '600px' }}>
         {
           items.map(item => {
-            return <Item key={item.id} id={item.id} />
+            return <Item key={item.get('id')} id={item.get('id')} />
           })
         }
       </div>
