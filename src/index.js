@@ -3,21 +3,20 @@ import { Provider } from 'react-redux'
 import React, { Component } from 'react'
 import App from './App'
 import { render } from 'react-dom'
+import { List } from 'immutable'
 
-const initial_state = []
-const STORE_SIZE = 10000
+let initial_state = []
+const STORE_SIZE = 100
 for (let i = 0; i < STORE_SIZE; i++) {
   initial_state.push({ id: i, marked: false })
 }
+initial_state = List(initial_state)
 
 function items(state = initial_state, action) {
-  const item = state[action.id]
+  const item = state.get(action.id)
   switch (action.type) {
     case 'MARK':
-      return {
-        ...state,
-        [action.id]: { ...item, marked: !item.marked }
-      }
+      return state.set(action.id, { id: item.id, marked: !item.marked })
     default:
       return state
   }

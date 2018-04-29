@@ -34,15 +34,12 @@ class Item extends Component {
   }
 }
 
-function mapStateToProps(_, initialProps) {
-  const { id } = initialProps
-  return (state) => {
-    const { items } = state
-    return {
-      item: items[id],
-    }
+function mapStateToProps(state, initialProps) {
+  return {
+    item: state.items.get(initialProps.id),
   }
 }
+
 const markItem = (id) => ({ type: 'MARK', id })
 
 export default connect(mapStateToProps, { markItem })(Item)
